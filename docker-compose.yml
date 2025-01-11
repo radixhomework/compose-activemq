@@ -1,0 +1,15 @@
+services:
+  activemq:
+    image: apache/activemq-artemis:latest
+    environment:
+      ARTEMIS_USER: "admin"
+      ARTEMIS_PASSWORD: ${ARTEMIS_PASSWORD}
+    ports:
+      - '${ARTEMIS_ADMIN_PORT}:8161'
+      - '${ARTEMIS_MQTT_PORT}:1883'
+    volumes:
+      - data:/var/lib/artemis-instance
+
+volumes:
+  data:
+    external: false
